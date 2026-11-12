@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #101010;
+            color: white;
+        }
+
+        header {
+            background: #181818;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+        }
+
+        header h2 {
+            color: #00e5ff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #00e5ff;
+        }
+
+        section {
+            padding: 80px 10%;
+            min-height: 60vh;
+        }
+
+        .home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 85vh;
+        }
+
+        .home h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .home span {
+            color: #00e5ff;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00e5ff;
+            color: black;
+            padding: 12px 25px;
+            margin-top: 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+        }
+
+        h2 {
+            color: #00e5ff;
+            margin-bottom: 25px;
+        }
+
+        .skills, .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: #202020;
+            padding: 25px;
+            border-radius: 10px;
+            flex: 1 1 200px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            transition: 0.3s;
+        }
+
+        input, textarea {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            background: #202020;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #00e5ff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: #181818;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media(max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 5px;
+                display: inline-block;
+            }
+
+            .home h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>My Portfolio</h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="home" id="home">
+    <h1>Hello, I'm <span>Your Name</span></h1>
+    <h3>I'm a <span id="typing">Web Developer</span></h3>
+    <p>Welcome to my personal portfolio website.</p>
+    <a href="#about" class="btn">Explore More</a>
+</section>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>
+        I am a passionate student and aspiring web developer.
+        I enjoy learning new technologies and creating
+        creative and user-friendly websites.
+    </p>
+</section>
+
+<section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills">
+        <div class="card">HTML</div>
+        <div class="card">CSS</div>
+        <div class="card">JavaScript</div>
+        <div class="card">Python</div>
+        <div class="card">SQL</div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>My Projects</h2>
+    <div class="projects">
+        <div class="card">
+            <h3>Portfolio Website</h3>
+            <p>A personal website created using HTML, CSS and JavaScript.</p>
+        </div>
+
+        <div class="card">
+            <h3>Student Management</h3>
+            <p>A simple student management project.</p>
+        </div>
+
+        <div class="card">
+            <h3>Python Project</h3>
+            <p>A basic application developed using Python.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+
+    <form id="contactForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>© <span id="year"></span> My Portfolio. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // Typing animation
+    const roles = ["Web Developer", "Python Programmer", "Student"];
+    let roleIndex = 0;
+
+    setInterval(() => {
+        roleIndex = (roleIndex + 1) % roles.length;
+        document.getElementById("typing").textContent = roles[roleIndex];
+    }, 2000);
+
+    // Contact form
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("Thank you for contacting me!");
+        this.reset();
+    });
+
+    // Automatic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
